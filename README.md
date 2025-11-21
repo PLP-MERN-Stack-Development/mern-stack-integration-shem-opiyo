@@ -1,3 +1,11 @@
+# Please bear with me, the assignement will be completed and updated by Sunday 23rd evening, EAT.
+<br> <br><br><br><br><br><br><br><br><br>
+<br> <br><br><br><br><br><br><br><br><br>
+<br> <br><br><br><br><br><br><br><br><br>
+
+
+
+
 # MERN Stack Integration Assignment
 
 This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
