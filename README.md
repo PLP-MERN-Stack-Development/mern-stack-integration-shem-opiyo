@@ -1,86 +1,90 @@
-# Please bear with me, the assignement will be completed and updated by Sunday 23rd evening, EAT.
-<br> <br><br><br><br><br><br><br><br><br>
-<br> <br><br><br><br><br><br><br><br><br>
-<br> <br><br><br><br><br><br><br><br><br>
+# MERN Blog – Full-Stack Blog Application
+
+A modern, fully functional blog built with the **MERN stack** (MongoDB, Express, React, Node.js) featuring user authentication, image uploads, comments, categories, and a beautiful responsive UI powered by **Tailwind CSS**.
+## Screenshots of the Application
+## Register Page
+![register page](images/register_page.png)
+## Login Page
+![login page](images/login_page.png)
+## Home Page
+![home page](images/home_page.png)
+## Features Implemented
+
+- User Registration & Login (JWT Authentication)
+- Protected Routes (only logged-in users can write posts)
+- Create, Read, Update, Delete (CRUD) blog posts
+- Featured image upload with Multer
+- Add comments to posts
+- Category system (posts belong to categories)
+- Responsive, modern UI with Tailwind CSS
+- Local MongoDB integration with Mongoose
+- Clean separation: `server/` (backend) + `client/` (React frontend)
+
+## Tech Stack
+
+| Layer         | Technology                  |
+|-------------|-----------------------------|
+| Frontend     | React 18 + Vite + Tailwind CSS + React Router |
+| Backend      | Node.js + Express           |
+| Database     | MongoDB (Local) + Mongoose  |
+| Auth         | JWT + bcryptjs              |
+| File Upload  | Multer                      |
+| API          | RESTful endpoints           |
+
+## Project Structure 
+![project structure](images/project_structure.png)
 
 
+## How to Run the Project
 
-4
-# MERN Stack Integration Assignment
-
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
-
-## Assignment Overview
-
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
-
-## Project Structure
-
+### 1. Start MongoDB (Local)
+```bash
+sudo systemctl start mongod
+sudo systemctl enable mongod
 ```
-mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
+### 2. Backend Setup
 ```
+cd server
+npm install
+npm run dev
+```
+Server runs on: http://localhost:5000
 
-## Getting Started
+### 3. Frontend Setup
+```
+cd client
+npm install
+npm install axios
+npm run dev
+```
+Open: http://localhost:5173
+### 4. First-Time Setup (One Time Only)
+After logging in for the first time:
+  1.  Open browser console
+  2.  Run this to create a category
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+  ```
+  fetch('http://localhost:5000/api/categories', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
+  },
+  body: JSON.stringify({ name: 'General' })
+})
+  ```
+  Now you can create posts!
 
-## Files Included
+## API Endpoints (Selected)
+### API Endpoints
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
+| Method | Endpoint                  | Description                   |
+|--------|---------------------------|-------------------------------|
+| POST   | `/api/auth/register`      | Register a new user           |
+| POST   | `/api/auth/login`         | Login user (returns JWT)      |
+| GET    | `/api/posts`              | Get all posts                 |
+| POST   | `/api/posts`              | Create post (protected)       |
+| POST   | `/api/posts/:id/comments` | Add comment to a post         |
+| GET    | `/api/categories`         | Get all categories            |
 
-## Requirements
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
-
-## Submission
-
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
-
-## Resources
-
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
